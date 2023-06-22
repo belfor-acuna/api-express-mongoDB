@@ -6,7 +6,7 @@ import connectDB from "./configs/mongo.js";
 
 const app = express();
 
-app.use(express.json);
+app.use(express.json());
 app.use("/auth", authRoutes);
 app.use("",studentRoute);
 
