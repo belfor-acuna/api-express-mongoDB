@@ -15,9 +15,6 @@ export default function connectDB() {
 		});
 }
 
-/**
- * Optional: In this method u can import all models in order to force register collections in database
- */
 async function registerModels() {
 	await import("../models/user.model.js");
 	await import("../models/messages.model.js");

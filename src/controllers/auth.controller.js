@@ -8,10 +8,10 @@ async function registerUser(req, res) {
         const userDni = req.body.dni;
         const password = req.body.password;
         const userPassword = bcrypt.hashSync(password, 2);
-        if (!userName) { return res.status(400).send({ succes: false, error: 'Falta campo nombre' }); }
-        if (!userEmail) { return res.status(400).send({ succes: false, error: 'Falta campo email' }) }
-        if (!userDni) { return res.status(400).send({ succes: false, error: 'Falta campo dni' }) }
-        if (!password) { return res.status(400).send({ succes: false, error: 'Falta campo contraseña' }) }
+        if (!userName) { return res.status(400).send({ success: false, error: 'Falta campo nombre' }); }
+        if (!userEmail) { return res.status(400).send({ success: false, error: 'Falta campo email' }) }
+        if (!userDni) { return res.status(400).send({ success: false, error: 'Falta campo dni' }) }
+        if (!password) { return res.status(400).send({ success: false, error: 'Falta campo contraseña' }) }
         await User.create({
             name: userName,
             email: userEmail,

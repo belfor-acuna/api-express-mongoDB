@@ -1,9 +1,10 @@
 import Router from 'express';
-import {createMessage} from "../controllers/message.controller.js";
+import {createMessage, deleteMessageById} from "../controllers/message.controller.js";
 
 const router = Router();
 
 router.post("", createMessage);
+router.delete("/:messageId", deleteMessageById);
 
 
 export default router;

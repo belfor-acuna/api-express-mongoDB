@@ -21,7 +21,6 @@ async function createMessage(req,res){
         return res.status(400).send({success:false,error:error.message})
 
     }
-    
 }
 
 async function getMessageByUser(req,res){
@@ -33,7 +32,7 @@ async function getMessageByUser(req,res){
         return res.status(200).send({messages})
     }else{
         return res.status(400).send({success:false,error:"Usuario no existe"})
-    }
+        }
     }
     catch(error){
         console.log(error);
@@ -43,4 +42,20 @@ async function getMessageByUser(req,res){
     
 }
 
-export {createMessage,getMessageByUser};
+async function deleteMessageById(req,res){
+    try{
+    console.log("hola");
+    const messageId = req.params.messageId;
+    const isExist = Message.findById(messageId);
+    if(isExist){
+        await Message.deleteOne({_id:messageId});
+        return res.status(204).send();
+    }
+    }
+    catch(error){
+        console.log(error)
+        return res.status(500).send({mensaje: error})
+    }
+}
+
+export {createMessage,getMessageByUser, deleteMessageById};
